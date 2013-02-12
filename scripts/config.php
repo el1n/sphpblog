@@ -8,23 +8,7 @@ if(!defined('ROOT_DIR')){
 // Base URL
 // You need to set this manually if you are using symlinks, sorry, this is a PHP limitation
 // we will assume this is a directory off of your root
-function getbaseurl($root_dir,$docroot)
-{
-	if($_SERVER['SCRIPT_FILENAME'] == realpath($_SERVER['SCRIPT_FILENAME'])){
-		$delimiter = "/";
-		if(strpos($docroot,"\\") !== FALSE){
-			$delimiter = "\\";
-		}
-		$pattern = str_replace($delimiter,"\/",$docroot);
-
-		//print $pattern . "<br>";
-		$root = str_replace("\\","/",$root_dir);
-		return preg_replace("/^".$pattern."/","",$root);
-	}else{
-		return '/'.basename(dirname(dirname(__file__))).'/';
-	}
-	return "";
-}
+define('BASEURL',preg_replace('/\/+/','/',dirname($_SERVER['SCRIPT_NAME']) . '/'));
 
 // SESSION LOCATION
 $sessionpath = session_save_path();
@@ -34,16 +18,6 @@ if(strpos($sessionpath,";") !== FALSE){
 	// '5;/tmp'
 }
 define('SESSION_SAVE_PATH',$sessionpath);
-
-// Default is '/tmp'
-/* for debugging
-print getbaseurl(ROOT_DIR, $_SERVER["DOCUMENT_ROOT"]);
-print "<br>";
-print getbaseurl("D:\\Inetpub\\wwwroot\\blog\\", "D:\\Inetpub\\wwwroot");
-print "<br>";
-*/
-
-define('BASEURL',getbaseurl(ROOT_DIR,$_SERVER["DOCUMENT_ROOT"]));
 
 // Variables
 // define('USE_MOD_REWRITE', false);
