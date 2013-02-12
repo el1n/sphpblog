@@ -24,6 +24,7 @@ class Calendar extends Sidebar
 		$arr = parent::defaultPrefs();
 		$arr['firstDay'] = 'sunday';
 		$arr['dateFormat'] = '%x';
+		$arr['dayFormat'] = '%d';
 		return $arr;
 	}
 
@@ -37,6 +38,8 @@ class Calendar extends Sidebar
 		$value_firstDay = $this->prefs['firstDay'];
 		$label_dateFormat = 'Date format as defined by the PHP <a href="http://us2.php.net/manual/en/function.strftime.php" target="_blank">strftime()</a> function';
 		$value_dateFormat = $this->prefs['dateFormat'];
+		$label_dayFormat = 'Date format as defined by the PHP <a href="http://us2.php.net/manual/en/function.sprintf.php" target="_blank">sprintf()</a> function';
+		$value_dayFormat = $this->prefs['dayFormat'];
 		$save = _sb('submit_btn');
 		ob_start();?>
 			<!-- FORM -->
@@ -53,6 +56,8 @@ class Calendar extends Sidebar
 				
 				<label for="dateFormat"><?php echo($label_dateFormat);?></label><br />
 				<input type="text" name="dateFormat" value="<?php echo($value_dateFormat);?>" autocomplete="OFF" size="40" style="width: <?php echo($width);?>px;"><p />
+				<label for="dayFormat"><?php echo($label_dayFormat);?></label><br />
+				<input type="text" name="dayFormat" value="<?php echo($value_dayFormat);?>" autocomplete="OFF" size="40" style="width: <?php echo($width);?>px;"><p />
 				
 				<input type="submit" name="save" value="<?php echo($save);?>" />
 			</form>
@@ -75,6 +80,13 @@ class Calendar extends Sidebar
 				$dateFormat = sb_stripslashes($_POST['dateFormat']);
 				if(!empty($dateFormat)){
 					$this->prefs['dateFormat'] = $dateFormat;
+					$this->savePrefs();
+				}
+			}
+			if(array_key_exists('dayFormat',$_POST)){
+				$dayFormat = sb_stripslashes($_POST['dayFormat']);
+				if(!empty($dayFormat)){
+					$this->prefs['dayFormat'] = $dayFormat;
 					$this->savePrefs();
 				}
 			}
@@ -236,9 +248,9 @@ class Calendar extends Sidebar
 				$str .= '<td style="text-align: center">';
 			}
 			if(isset($counts[$i - 1]) && $counts[$i - 1] > 0){
-				$str .= '<a href="'.BASEURL.'index.php?d='.sprintf('%02d',$i).'&amp;m='.sprintf('%02d',$m).'&amp;y='.sprintf('%02d',$y % 100).'" title="'.$counts[$i - 1].'">'.$i.'</a>';
+				$str .= '<a href="'.BASEURL.'index.php?d='.sprintf('%02d',$i).'&amp;m='.sprintf('%02d',$m).'&amp;y='.sprintf('%02d',$y % 100).'" title="'.$counts[$i - 1].'">'.sprintf($this->prefs['dayFormat'],$i).'</a>';
 			}else{
-				$str .= $i;
+				$str .= sprintf($this->prefs['dayFormat'],$i);
 			}
 			$str .= '</td>';
 			$current_position++;
