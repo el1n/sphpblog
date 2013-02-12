@@ -91,7 +91,7 @@ function read_entries($m,$y,$d,$logged_in,$start_entry,$category,$is_permalink =
 		// 'dummy' entry name...
 		$look_for = 'entry'.$y.$m.$d;
 	}
-	$entry_index = 0;
+	$entry_index = -1;
 	for($i = 0;$i < count($entry_file_array);$i++){
 		if(stristr(str_replace(' ','-',$entry_file_array[$i]),$look_for) !== FALSE){
 
@@ -99,6 +99,12 @@ function read_entries($m,$y,$d,$logged_in,$start_entry,$category,$is_permalink =
 			$entry_index = $i;
 			break;
 		}
+	}
+	if($entry_index < 0){
+		if($r = read_static_entry('_404',$logged_in)){
+			return(theme_staticentry($r,$logged_in));
+		}
+		$entry_index = 0;
 	}
 	$blog_max_entries = $blog_config->getTag('BLOG_MAX_ENTRIES');
 	if($is_permalink){

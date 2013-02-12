@@ -21,7 +21,9 @@ if($redirect === true){
 global $entry_array;
 $static_page = urldecode($_GET['page']);
 $static_page = preg_replace('/(\s|\\\|\/|%|#)/','_',$static_page);
-$entry_array = read_static_entry($static_page,$logged_in);
+if(!($entry_array = read_static_entry($static_page,$logged_in))){
+	redirect_to_url('index.php');
+}
 
 // ------------
 // PAGE CONTENT

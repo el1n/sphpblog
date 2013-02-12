@@ -56,7 +56,6 @@ function read_static_entry($entry_id,$logged_in)
 	}elseif(file_exists(CONTENT_DIR.'static/_404.txt')){
 		$filename = CONTENT_DIR.'static/_404.txt';
 	}else{
-		redirect_to_url('index.php');
 		return;
 	}
 	$blog_entry_data = static_entry_to_array($filename);
