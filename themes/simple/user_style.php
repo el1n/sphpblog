@@ -1,13 +1,11 @@
 <?php
 require_once('../../scripts/sb_functions.php');
-
 read_config();
-
 header("Content-Type: text/css");
 ?>
-	body {
-		color: #<?php echo(get_user_color('txt_color')); ?>;
-		background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
+	body{
+		color: #<?php echo(get_user_color('txt_color'));?>;
+		background-color: #<?php echo(get_user_color('main_bg_color'));?>;
 		background-image: url('images/background-left.gif'), url('images/background-right.gif');
 		background-position: top left, top right;
 		background-repeat: repeat-y;
@@ -25,50 +23,51 @@ header("Content-Type: text/css");
         	margin: 8px 0px 8px 0px;
 	}
 
-	img {
+	img{
 		border-style: none;
 	}
 
-	code, pre {
+	code, pre{
         	font-family: 'Courier New', Courier, Fixed;
 	}
 	
-	pre {
-		max-width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
+	pre{
+		max-width: <?php global $theme_vars;
+echo($theme_vars['max_image_width']);?>px;
         	overflow: auto;
-        	border: 1px dotted #<?php echo(get_user_color('inner_border_color')); ?>; /* inner_border_color */
+        	border: 1px dotted #<?php echo(get_user_color('inner_border_color'));?>; /* inner_border_color */
         	padding: 5px;
 	}
 	
-	blockquote {
+	blockquote{
 	        margin: 15px 30px 0 10px;
         	padding-left: 20px;
-	        border-left: 5px solid #<?php echo(get_user_color('inner_border_color')); ?>;
+	        border-left: 5px solid #<?php echo(get_user_color('inner_border_color'));?>;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
-		color: #<?php echo(get_user_color('headline_txt_color')); ?>;
+	h1, h2, h3, h4, h5, h6{
+		color: #<?php echo(get_user_color('headline_txt_color'));?>;
         	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
 	        font-weight: bold;
 	        margin: 2px 0px 2px 0px;
 	}
 
-	a:link, a:visited {
-		color: #<?php echo(get_user_color('link_reg_color')); ?>;
+	a:link, a:visited{
+		color: #<?php echo(get_user_color('link_reg_color'));?>;
 	        font-weight: bold;
         	text-decoration: none;
 	}
 
-	a:hover {
-		color: #<?php echo(get_user_color('link_hi_color')); ?>;
+	a:hover{
+		color: #<?php echo(get_user_color('link_hi_color'));?>;
 		text-decoration: underline;
 	}
 
-	a:active {
-		color: #<?php echo(get_user_color('link_down_color')); ?>;
+	a:active{
+		color: #<?php echo(get_user_color('link_down_color'));?>;
 	}
 
-form {
+form{
         font-size: 11px;
 }
 
@@ -81,19 +80,19 @@ input, select, option, textarea
 
 	hr	
 	{
-		color: #<?php echo(get_user_color('inner_border_color')); ?>;
-		background-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+		color: #<?php echo(get_user_color('inner_border_color'));?>;
+		background-color: #<?php echo(get_user_color('inner_border_color'));?>;
 		margin: 4px 0px;
 	}
 
-	.copyright {
-		color: #<?php echo(get_user_color('footer_txt_color')); ?>;
+	.copyright{
+		color: #<?php echo(get_user_color('footer_txt_color'));?>;
 		font-size: 10px;
 	}
 
-	.subject {
-		/* color: #<?php echo(get_user_color('headline_txt_color')); ?>; */
-		color: #<?php echo(get_user_color('entry_title_text')); ?>;
+	.subject{
+		/* color: #<?php echo(get_user_color('headline_txt_color'));?>; */
+		color: #<?php echo(get_user_color('entry_title_text'));?>;
         	font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
         	font-size: 18px;
         	font-weight: bold;
@@ -101,15 +100,15 @@ input, select, option, textarea
 	}
 	
 
-	.byline {
-		color: #<?php echo(get_user_color('date_txt_color')); ?>;
+	.byline{
+		color: #<?php echo(get_user_color('date_txt_color'));?>;
         	font-size: 10px;
 	        padding: 2px 0px;
 	}
 	
-	#header {
-		color: #<?php echo(get_user_color('header_txt_color')); ?>;
-		background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
+	#header{
+		color: #<?php echo(get_user_color('header_txt_color'));?>;
+		background-color: #<?php echo(get_user_color('header_bg_color'));?>;
 	        min-height: 25px;
         	background: url(images/nav-background.gif) repeat-x;
 	}
@@ -122,8 +121,8 @@ input, select, option, textarea
         	text-decoration: inherit;
 	}
 	
-	#footer {
-		background-color: #<?php echo(get_user_color('footer_bg_color')); ?>;
+	#footer{
+		background-color: #<?php echo(get_user_color('footer_bg_color'));?>;
 	        padding: 4px 20px;
         	clear: both;
 	        border-top: #999999 1px solid;
@@ -131,7 +130,7 @@ input, select, option, textarea
 	
 	#sidebar a:link, #sidebar a:visited
 	{
-		color: #<?php echo(get_user_color('menu_link_reg_color')); ?>;
+		color: #<?php echo(get_user_color('menu_link_reg_color'));?>;
 	}
 
 	#page
@@ -141,18 +140,18 @@ input, select, option, textarea
 	
 	#sidebar a:hover
 	{
-		color: #<?php echo(get_user_color('menu_link_hi_color')); ?>;
+		color: #<?php echo(get_user_color('menu_link_hi_color'));?>;
 	}
 	
 	#sidebar a:active
 	{
-		color: #<?php echo(get_user_color('menu_link_down_color')); ?>;
+		color: #<?php echo(get_user_color('menu_link_down_color'));?>;
 	}
 	
-	#sidebar .menu_title,  #sidebar .menu_title a:link, #sidebar .menu_title a:visited, #sidebar .menu_title a:hover, #sidebar .menu_title a:active {
-		color: #<?php echo(get_user_color('menu_title_text')); ?>;
-		background-color: #<?php echo(get_user_color('menu_title_bg')); ?>;
-		border-color: #<?php echo(get_user_color('menu_border')); ?>;
+	#sidebar .menu_title,  #sidebar .menu_title a:link, #sidebar .menu_title a:visited, #sidebar .menu_title a:hover, #sidebar .menu_title a:active{
+		color: #<?php echo(get_user_color('menu_title_text'));?>;
+		background-color: #<?php echo(get_user_color('menu_title_bg'));?>;
+		border-color: #<?php echo(get_user_color('menu_border'));?>;
 	        font-family: 'Trebuchet MS', 'Gill Sans', Helvetica, sans-serif;
         	font-weight: bold;
 	        padding: 7px 5px 5px 6px;
@@ -165,16 +164,16 @@ input, select, option, textarea
 }
 
 	
-	#sidebar .menu_body {
-		color: #<?php echo(get_user_color('menu_text')); ?>;
-		background-color: #<?php echo(get_user_color('menu_bg')); ?>;
+	#sidebar .menu_body{
+		color: #<?php echo(get_user_color('menu_text'));?>;
+		background-color: #<?php echo(get_user_color('menu_bg'));?>;
 	        padding: 10px;
         	margin-bottom: 10px;
-	        border: #<?php echo(get_user_color('menu_border')); ?> 1px solid;
+	        border: #<?php echo(get_user_color('menu_border'));?> 1px solid;
 	}
 
-  #sidebar {
-        max-width: <?php echo $theme_vars[ 'menu_width' ] ?>px;
+  #sidebar{
+        max-width: <?php echo $theme_vars['menu_width']?>px;
         padding: 10px;
         float: right;
 	clear: both;
@@ -238,7 +237,7 @@ input, select, option, textarea
 	entry_text */
 
                 div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
-                {
-                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+               {
+                        border-color: #<?php echo(get_user_color('inner_border_color'));?>;
                 }
 

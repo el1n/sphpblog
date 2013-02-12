@@ -1,32 +1,27 @@
 <?php
 require_once('../../scripts/sb_functions.php');
-
 read_config();
-
-    $content_width = $theme_vars[ 'content_width' ];
-    $menu_width = $theme_vars[ 'menu_width' ];
-    $page_width = $content_width + $menu_width;
-
-    $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
-    if ( $header_graphic == '' ) {
-       $header_graphic = 'images/header750x100.jpg';
-    } else {
-       $header_graphic = '../../' . $header_graphic;
-    }
-
-    $oppo = 'left';
-    if ($theme_vars[ 'menu_align' ] == 'left') {
-        $oppo = 'right';
-    }
-
+$content_width = $theme_vars['content_width'];
+$menu_width = $theme_vars['menu_width'];
+$page_width = $content_width + $menu_width;
+$header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
+if($header_graphic == ''){
+	$header_graphic = 'images/header750x100.jpg';
+}else{
+	$header_graphic = '../../'.$header_graphic;
+}
+$oppo = 'left';
+if($theme_vars['menu_align'] == 'left'){
+	$oppo = 'right';
+}
 header("Content-Type: text/css");
 ?>
   /* OVERRIDE COLORS */
 
   /* GENERAL SETTINGS */
-  body {
-    background-color: #<?php echo(get_user_color('bg_color')); ?>;
-    color: #<?php echo(get_user_color('txt_color')); ?>;
+  body{
+    background-color: #<?php echo(get_user_color('bg_color'));?>;
+    color: #<?php echo(get_user_color('txt_color'));?>;
     font-family: Arial, Helvetica, Sans-Serif;
     font-size: 0.7em;
     margin: 0;
@@ -34,29 +29,29 @@ header("Content-Type: text/css");
   }
 
   hr  
-  {
-    color: #<?php echo(get_user_color('inner_border_color')); ?>;
-    background-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+ {
+    color: #<?php echo(get_user_color('inner_border_color'));?>;
+    background-color: #<?php echo(get_user_color('inner_border_color'));?>;
   }
 
   p
-  {
+ {
     margin: .8em 0 .8em 0;
   }
 
 
   input, select, option, textarea
-  {
+ {
     font-size: 1em;
   }
 
-  img {
+  img{
     border-style: none;
   }
 
   /* HEADERS */
   h1, h2, h3, h4, h5, h6
-  {
+ {
     font-family: Arial, Helvetica, Sans-Serif;
     font-weight: bold;
     margin: .3em 0 .3em 0;
@@ -64,19 +59,20 @@ header("Content-Type: text/css");
   
   /* TYPEOGRAPHY */
   
-  a { text-decoration: none; }
-  a:link, a:visited { color: #<?php echo(get_user_color('link_reg_color')); ?>; }
-  a:hover { color: #<?php echo(get_user_color('link_hi_color')); ?>; }
-  a:active { color: #<?php echo(get_user_color('link_down_color')); ?>; }
+  a{ text-decoration: none; }
+  a:link, a:visited{ color: #<?php echo(get_user_color('link_reg_color'));?>; }
+  a:hover{ color: #<?php echo(get_user_color('link_hi_color'));?>; }
+  a:active{ color: #<?php echo(get_user_color('link_down_color'));?>; }
 
-  code, pre {
+  code, pre{
     font-family: 'Courier New', Courier, Fixed;
     font-size: 1.2em;
   }
 
-  pre {
-    max-width: <?php global $theme_vars; echo( $theme_vars[ 'max_image_width' ] ); ?>px;
-    border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+  pre{
+    max-width: <?php global $theme_vars;
+echo($theme_vars['max_image_width']);?>px;
+    border-color: #<?php echo(get_user_color('inner_border_color'));?>;
     overflow: auto;
     border: 1px dotted #777;
     padding: 10px;
@@ -84,13 +80,13 @@ header("Content-Type: text/css");
   
   /* HEADERS */
   
-  h1, h2, h3, h4, h5, h6 {
-    /* color: #<?php echo(get_user_color('headline_txt_color')); ?>; */
+  h1, h2, h3, h4, h5, h6{
+    /* color: #<?php echo(get_user_color('headline_txt_color'));?>; */
   }
   
-  blockquote {
-    color: #<?php echo(get_user_color('txt_color')); ?>;
-    border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+  blockquote{
+    color: #<?php echo(get_user_color('txt_color'));?>;
+    border-color: #<?php echo(get_user_color('inner_border_color'));?>;
     padding-left: 1.5em;
     border-left: 5px solid #999999;
     margin: 1.5em 3.0em 0 1.0em;
@@ -98,54 +94,54 @@ header("Content-Type: text/css");
   
   /* LAYOUT / PLACEMENT */
   
-  #page {
-    background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
-    max-width: <?php echo $page_width; ?>px;
+  #page{
+    background-color: #<?php echo(get_user_color('main_bg_color'));?>;
+    max-width: <?php echo $page_width;?>px;
     margin: 10px auto 10px auto;
-    border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+    border: 1px solid #<?php echo(get_user_color('border_color'));?>;
   }
   
-  #popup {
+  #popup{
     max-width: 550px;
     margin: 10px auto 10px auto;
-    border: 1px solid #<?php echo(get_user_color('border_color')); ?>;
-    background-color: #<?php echo(get_user_color('main_bg_color')); ?>;
+    border: 1px solid #<?php echo(get_user_color('border_color'));?>;
+    background-color: #<?php echo(get_user_color('main_bg_color'));?>;
   }
   
-  #header {
-    background-image: url('<?php echo( $header_graphic ); ?>');
+  #header{
+    background-image: url('<?php echo($header_graphic);?>');
     background-repeat: no-repeat;
     border-style: none;
     min-height: 25px;
     padding: 105px 5px 5px 5px;
-    border-bottom: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+    border-bottom: 1px solid #<?php echo(get_user_color('border_color'));?>;
     font-size: 1.3em;
-    background-color: #<?php echo(get_user_color('header_bg_color')); ?>;
-    color: #<?php echo(get_user_color('header_txt_color')); ?>;
+    background-color: #<?php echo(get_user_color('header_bg_color'));?>;
+    color: #<?php echo(get_user_color('header_txt_color'));?>;
   }
 
   #pagebody
-  {
+ {
     margin: 0;
     padding: 0;
   }
   
-  #footer {
-    color: #<?php echo(get_user_color('footer_txt_color')); ?>;
-    background: #<?php echo(get_user_color('footer_bg_color')); ?>;
+  #footer{
+    color: #<?php echo(get_user_color('footer_txt_color'));?>;
+    background: #<?php echo(get_user_color('footer_bg_color'));?>;
     font-size: 0.8em;
 /*    background-color: #996; */
-    background-color: #<?php echo(get_user_color('footer_bg_color')); ?>;
+    background-color: #<?php echo(get_user_color('footer_bg_color'));?>;
     padding: 10px;
-    border-top: 1px solid #<?php echo(get_user_color('border_color')); ?>;
+    border-top: 1px solid #<?php echo(get_user_color('border_color'));?>;
     clear: both;
 
   }
   
   /* CONTENT */
   #maincontent
-  {
-    max-width: <?php echo( $theme_vars[ 'content_width' ]-25); ?>px;
+ {
+    max-width: <?php echo($theme_vars['content_width'] - 25);?>px;
     padding: 10px;
   }
 
@@ -234,105 +230,105 @@ header("Content-Type: text/css");
   
   /* REGULAR ENTRY */
   #maincontent .entry .blog_title
-  {
-    border-color: #<?php echo(get_user_color('entry_border')); ?>;
-    color: #<?php echo(get_user_color('entry_title_text')); ?>;
-    background-color: #<?php echo(get_user_color('entry_title_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('entry_border'));?>;
+    color: #<?php echo(get_user_color('entry_title_text'));?>;
+    background-color: #<?php echo(get_user_color('entry_title_bg'));?>;
   }
   
   #maincontent .entry .blog_body
-  {
-    border-color: #<?php echo(get_user_color('entry_border')); ?>;
-    color: #<?php echo(get_user_color('entry_text')); ?>;
-    background-color: #<?php echo(get_user_color('entry_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('entry_border'));?>;
+    color: #<?php echo(get_user_color('entry_text'));?>;
+    background-color: #<?php echo(get_user_color('entry_bg'));?>;
   }
 
-  #maincontent .entry .blog_body_solid  {
-    border-color: #<?php echo(get_user_color('entry_border')); ?>;
-    color: #<?php echo(get_user_color('entry_text')); ?>;
-    background-color: #<?php echo(get_user_color('entry_border')); ?>;
+  #maincontent .entry .blog_body_solid {
+    border-color: #<?php echo(get_user_color('entry_border'));?>;
+    color: #<?php echo(get_user_color('entry_text'));?>;
+    background-color: #<?php echo(get_user_color('entry_border'));?>;
   }
   
   #maincontent .entry .blog_comment
-  {
-    border-color: #<?php echo(get_user_color('entry_border')); ?>;
-    color: #<?php echo(get_user_color('entry_text')); ?>;
-    background-color: #<?php echo(get_user_color('entry_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('entry_border'));?>;
+    color: #<?php echo(get_user_color('entry_text'));?>;
+    background-color: #<?php echo(get_user_color('entry_bg'));?>;
   }
   
   #maincontent .entry .blog_date,
   #maincontent .static .blog_date,
   #maincontent .comment .blog_date
-  {
-    color: #<?php echo(get_user_color('date_txt_color')); ?>;
+ {
+    color: #<?php echo(get_user_color('date_txt_color'));?>;
   }
   
   /* STATIC ENTRY */
   #maincontent .static .blog_title
-  {
-    border-color: #<?php echo(get_user_color('static_border')); ?>;
-    color: #<?php echo(get_user_color('static_title_text')); ?>;
-    background-color: #<?php echo(get_user_color('static_title_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('static_border'));?>;
+    color: #<?php echo(get_user_color('static_title_text'));?>;
+    background-color: #<?php echo(get_user_color('static_title_bg'));?>;
   }
   
   #maincontent .static .blog_body
-  {
-    border-color: #<?php echo(get_user_color('static_border')); ?>;
-    color: #<?php echo(get_user_color('static_text')); ?>;
-    background-color: #<?php echo(get_user_color('static_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('static_border'));?>;
+    color: #<?php echo(get_user_color('static_text'));?>;
+    background-color: #<?php echo(get_user_color('static_bg'));?>;
   }
   
   #maincontent .static .blog_comment
-  {
-    border-color: #<?php echo(get_user_color('static_border')); ?>;
-    color: #<?php echo(get_user_color('static_text')); ?>;
-    background-color: #<?php echo(get_user_color('static_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('static_border'));?>;
+    color: #<?php echo(get_user_color('static_text'));?>;
+    background-color: #<?php echo(get_user_color('static_bg'));?>;
   }
   
   /* COMMENT ENTRY */
   #maincontent .comment .blog_title
-  {
-    border-color: #<?php echo(get_user_color('comment_border')); ?>;
-    color: #<?php echo(get_user_color('comment_title_text')); ?>;
-    background-color: #<?php echo(get_user_color('comment_title_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('comment_border'));?>;
+    color: #<?php echo(get_user_color('comment_title_text'));?>;
+    background-color: #<?php echo(get_user_color('comment_title_bg'));?>;
   }
   
   #maincontent .comment .blog_body
-  {
-    border-color: #<?php echo(get_user_color('comment_border')); ?>;
-    color: #<?php echo(get_user_color('comment_text')); ?>;
-    background-color: #<?php echo(get_user_color('comment_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('comment_border'));?>;
+    color: #<?php echo(get_user_color('comment_text'));?>;
+    background-color: #<?php echo(get_user_color('comment_bg'));?>;
   }
   
   #maincontent .comment .blog_comment
-  {
-    border-color: #<?php echo(get_user_color('comment_border')); ?>;
-    color: #<?php echo(get_user_color('comment_text')); ?>;
-    background-color: #<?php echo(get_user_color('comment_bg')); ?>;
+ {
+    border-color: #<?php echo(get_user_color('comment_border'));?>;
+    color: #<?php echo(get_user_color('comment_text'));?>;
+    background-color: #<?php echo(get_user_color('comment_bg'));?>;
   }
   
   /* SIDEBAR */
   
-  #sidebar {
-    max-width: <?php echo( $theme_vars[ 'menu_width' ]-20); ?>px;
-    float: <?php echo $theme_vars[ 'menu_align' ]; ?>;
+  #sidebar{
+    max-width: <?php echo($theme_vars['menu_width'] - 20);?>px;
+    float: <?php echo $theme_vars['menu_align'];?>;
     padding: 10px;
-    background-color: #<?php echo(get_user_color('menu_bg_color')); ?>;
-    border-left: 1px #<?php echo(get_user_color('inner_border_color')); ?> solid;
-    border-bottom: 1px #<?php echo(get_user_color('inner_border_color')); ?> solid;
-    border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+    background-color: #<?php echo(get_user_color('menu_bg_color'));?>;
+    border-left: 1px #<?php echo(get_user_color('inner_border_color'));?> solid;
+    border-bottom: 1px #<?php echo(get_user_color('inner_border_color'));?> solid;
+    border-color: #<?php echo(get_user_color('inner_border_color'));?>;
   }
   
-  #sidebar .menu_body a { text-decoration: none; }
-  #sidebar .menu_body a:link { color: #<?php echo(get_user_color('menu_link_reg_color')); ?>; }
-  #sidebar .menu_body a:visited { color: #<?php echo(get_user_color('menu_link_reg_color')); ?>; }
-  #sidebar .menu_body a:hover { color: #<?php echo(get_user_color('menu_link_hi_color')); ?>; }
-  #sidebar .menu_body a:active { color: #<?php echo(get_user_color('menu_link_down_color')); ?>; }
+  #sidebar .menu_body a{ text-decoration: none; }
+  #sidebar .menu_body a:link{ color: #<?php echo(get_user_color('menu_link_reg_color'));?>; }
+  #sidebar .menu_body a:visited{ color: #<?php echo(get_user_color('menu_link_reg_color'));?>; }
+  #sidebar .menu_body a:hover{ color: #<?php echo(get_user_color('menu_link_hi_color'));?>; }
+  #sidebar .menu_body a:active{ color: #<?php echo(get_user_color('menu_link_down_color'));?>; }
   
-  #sidebar .menu_title {
-    border-color: #<?php echo(get_user_color('menu_border')); ?>;
-    color: #<?php echo(get_user_color('menu_title_text')); ?>;
-    background-color: #<?php echo(get_user_color('menu_title_bg')); ?>;
+  #sidebar .menu_title{
+    border-color: #<?php echo(get_user_color('menu_border'));?>;
+    color: #<?php echo(get_user_color('menu_title_text'));?>;
+    background-color: #<?php echo(get_user_color('menu_title_bg'));?>;
     font-size: 1em;
     padding: .3em .5em;
     margin: 0;
@@ -341,21 +337,21 @@ header("Content-Type: text/css");
   }
 
   #sidebar .menu_title a
-  {
+ {
     text-decoration: none;
     color: inherit;
   }
 
   
-  #sidebar .menu_body {
+  #sidebar .menu_body{
     padding: 10px;
     margin: 0;
     border-width: 0 1px 1px 1px;
     border-style: none solid solid solid;
 
-    border-color: #<?php echo(get_user_color('menu_border')); ?>;
-    color: #<?php echo(get_user_color('menu_text')); ?>;
-    background-color: #<?php echo(get_user_color('menu_bg')); ?>;
+    border-color: #<?php echo(get_user_color('menu_border'));?>;
+    color: #<?php echo(get_user_color('menu_text'));?>;
+    background-color: #<?php echo(get_user_color('menu_bg'));?>;
   }
 
 .blog_ip_address
@@ -381,7 +377,7 @@ header("Content-Type: text/css");
 }
 
                 div #toggleSetupLanguage, #toggleSetupGeneral, #toggleSetupEntries, #toggleSetupSidebar, #toggleSetupTrackbacks, #toggleSetupComments, #toggleSetupCompression
-                {
-                        border-color: #<?php echo(get_user_color('inner_border_color')); ?>;
+               {
+                        border-color: #<?php echo(get_user_color('inner_border_color'));?>;
                 }
 
