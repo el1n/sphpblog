@@ -35,202 +35,41 @@ function htmlDecode($temp_str)
 	return($temp_str);
 }
 
-function blog_to_html($str,$comment_mode,$strip_all_tags,$add_no_follow = false,$emoticon_replace = false)
+function blog_to_html($str,$comment_mode,$strip_all_tags,$add_no_follow=false,$emoticon_replace=false)
 {
-
-	// Convert Simple Blog tags to HTML.
-	//
-	// Search and replace simple tags. These tags don't have any
-	// special attributes so we can do a str_replace() on them.
-	//
-	// ( Could use str_ireplace() but it's only supported in PHP 5. )
-	global $blog_config;
-	$str = str_replace('&amp;#124;','|',$str);
-	$allowed = explode(',',$blog_config->getTag('COMMENT_TAGS_ALLOWED'));
 	if($comment_mode){
-		$tag_arr = array();
-		if(in_array('i',$allowed)){
-			array_push($tag_arr,'i');
-		}
-		if(in_array('b',$allowed)){
-			array_push($tag_arr,'b');
-		}
-		if(in_array('u',$allowed)){
-			array_push($tag_arr,'u');
-		}
-		if(in_array('blockquote',$allowed)){
-			array_push($tag_arr,'blockquote');
-		}
-		if(in_array('strong',$allowed)){
-			array_push($tag_arr,'strong');
-		}
-		if(in_array('em',$allowed)){
-			array_push($tag_arr,'em');
-		}
-		if(in_array('hN',$allowed)){
-			array_push($tag_arr,'h1','h2','h3','h4','h5','h6');
-		}
-		if(in_array('del',$allowed)){
-			array_push($tag_arr,'del');
-		}
-		if(in_array('ins',$allowed)){
-			array_push($tag_arr,'ins');
-		}
-		if(in_array('strike',$allowed)){
-			array_push($tag_arr,'strike');
-		}
-		if(in_array('pre',$allowed)){
-			array_push($tag_arr,'pre');
-		}
-		if(in_array('code',$allowed)){
-			array_push($tag_arr,'code');
-		}
-		if(in_array('center',$allowed)){
-			array_push($tag_arr,'center');
-		}
-	}else{
-		$tag_arr = array('i','b','blockquote','strong','em','h1','h2','h3','h4','h5','h6','del','ins','strike','pre','code','center','u');
+		return($str);
 	}
 
-	// Build search and replace arrays.
-	$search_arr = array();
-	$replace_arr = array();
-	for($i = 0;$i < count($tag_arr);$i++){
-		$tag = $tag_arr[$i];
-		array_push($search_arr,'['.strtolower($tag).']','['.strtoupper($tag).']');
-		if($strip_all_tags){
-			array_push($replace_arr,'','');
-		}else{
-			array_push($replace_arr,'<'.strtolower($tag).'>','<'.strtoupper($tag).'>');
-		}
-		array_push($search_arr,'[/'.strtolower($tag).']','[/'.strtoupper($tag).']');
-		if($strip_all_tags){
-			array_push($replace_arr,'','');
-		}else{
-			array_push($replace_arr,'</'.strtolower($tag).'>','</'.strtoupper($tag).'>');
-		}
-	}
+	$closure = function($m){
+		static $plugins = array();
 
-	// Special QUOTE shortcut to BLOCKQUOTE tag.
-	if($comment_mode){
-		if(in_array('blockquote',$allowed)){
-			array_push($search_arr,'[quote]','[QUOTE]');
-			if($strip_all_tags){
-				array_push($replace_arr,'','');
-			}else{
-				array_push($replace_arr,'<blockquote>','<BLOCKQUOTE>');
-			}
-			array_push($search_arr,'[/quote]','[/QUOTE]');
-			if($strip_all_tags){
-				array_push($replace_arr,'','');
-			}else{
-				array_push($replace_arr,'</blockquote>','</BLOCKQUOTE>');
-			}
-		}
-	}else{
-		array_push($search_arr,'[quote]','[QUOTE]');
-		if($strip_all_tags){
-			array_push($replace_arr,'','');
-		}else{
-			array_push($replace_arr,'<blockquote>','<BLOCKQUOTE>');
-		}
-		array_push($search_arr,'[/quote]','[/QUOTE]');
-		if($strip_all_tags){
-			array_push($replace_arr,'','');
-		}else{
-			array_push($replace_arr,'</blockquote>','</BLOCKQUOTE>');
-		}
-	}
-
-	// Emoticons
-	if(!$strip_all_tags){
-		if($emoticon_replace && $blog_config->getTag('USE_EMOTICONS')){
-			$emote_arr = emoticons_load_tags();
-			for($i = 0;$i < count($emote_arr);$i++){
-				$emotetag_arr = explode(' ',$emote_arr[$i]['TAGS']);
-				for($j = 0;$j < count($emotetag_arr);$j++){
-					$html_safe_tag = @htmlspecialchars(addslashes($emotetag_arr[$j]),ENT_QUOTES,$GLOBALS['lang_string']['php_charset']);
-					array_push($search_arr,$emotetag_arr[$j]);
-					array_push($replace_arr,'<img src="'.$emote_arr[$i]['PATH'].'" alt="'.$html_safe_tag.'" />');
+		if(!count($plugins)){
+			if($dh = opendir(ROOT_DIR.'scripts/plugins/entry/')){
+				while($file = readdir($dh)){
+					if(is_file(ROOT_DIR.'scripts/plugins/entry/'.$file) && preg_match('/\.php$/isS',$file)){
+						require_once(ROOT_DIR.'scripts/plugins/entry/'.$file);
+						$plugin = preg_replace('/\.php$/isS','',$file);
+						$plugins[$plugin] = new $plugin;
+					}
 				}
+				uasort($plugins,function($a,$b){return($a->priority > $b->priority);});
 			}
 		}
-	}
-	$str = str_replace($search_arr,$replace_arr,$str);
 
-	// Replace [url] Tags:
-	// The [url] tag has an optional "new" attribute. The "new"
-	// attribute determines whether to open the link in the
-	// same window or a new window.
-	// new	 - (true/false)
-	//
-	// [url=http://xxx]xxx[/url]
-	// [url=http://xxx new=true]xxx[/url]
-	if($comment_mode){
-		if(in_array('url',$allowed) && $strip_all_tags === false){
-			$str = replace_url_tag($str,'[url=',']','[/url]',false,$add_no_follow);
-			$str = replace_url_tag($str,'[URL=',']','[/URL]',false,$add_no_follow);
-		}else{
-			$str = replace_url_tag($str,'[url=',']','[/url]',true,$add_no_follow);
-			$str = replace_url_tag($str,'[URL=',']','[/URL]',true,$add_no_follow);
+		foreach($plugins as $name =>$plugin){
+			$m[2] = $plugin->main($m[2]);
 		}
-	}else{
-		if($strip_all_tags){
-			$str = replace_url_tag($str,'[url=',']','[/url]',true,$add_no_follow);
-			$str = replace_url_tag($str,'[URL=',']','[/URL]',true,$add_no_follow);
-		}else{
-			$str = replace_url_tag($str,'[url=',']','[/url]',false,$add_no_follow);
-			$str = replace_url_tag($str,'[URL=',']','[/URL]',false,$add_no_follow);
-		}
-	}
+		return(implode(array_slice($m,1)));
+	};
 
-	// Replace [img] Tags:
-	// The [img] tag has an number of optional attributes -
-	// width	- width of image in pixels
-	// height - height of image in pixels
-	// popup	- (true/false)
-	// float	- (left/right)
-	//
-	// [img=http://xxx]
-	// [img=http://xxx width=xxx height=xxx popup=true float=left]
-	if($comment_mode){
+	$str = preg_replace_callback('/(^|\[\/(?:HTML)\])(.*?)($|\[(?:HTML)\])/isS',$closure,$str);
+	$str = replace_url_tag($str,'[url=',']','[/url]',$strip_all_tags ? true : false,$add_no_follow);
+	$str = replace_url_tag($str,'[URL=',']','[/URL]',$strip_all_tags ? true : false,$add_no_follow);
+	$str = replace_img_tag($str,'[img=',']',$strip_all_tags ? true : false);
+	$str = replace_img_tag($str,'[IMG=',']',$strip_all_tags ? true : false);
+	$str = replace_html_tag($str,$strip_all_tags ? true : false);
 
-		/*	if ( in_array( 'img', $allowed ) && $strip_all_tags === false	){
-				$str = replace_img_tag( $str, '[img=', ']', false );
-				$str = replace_img_tag( $str, '[IMG=', ']', false );
-			}else{ */
-
-		$str = replace_img_tag($str,'[img=',']',true);
-		$str = replace_img_tag($str,'[IMG=',']',true);
-
-		/*			}*/
-	}else{
-		if($strip_all_tags){
-			$str = replace_img_tag($str,'[img=',']',true);
-			$str = replace_img_tag($str,'[IMG=',']',true);
-		}else{
-			$str = replace_img_tag($str,'[img=',']',false);
-			$str = replace_img_tag($str,'[IMG=',']',false);
-		}
-	}
-
-	// Selectively replace line breaks and/or decode html entities.
-	if($comment_mode){
-
-		/*if ( in_array( 'html', $allowed ) && $strip_all_tags === false ){
-			$str = replace_html_tag( $str, false );
-		}else{*/
-
-		$str = replace_html_tag($str,true);
-
-		/*}*/
-	}else{
-		if($strip_all_tags){
-			$str = replace_html_tag($str,true);
-		}else{
-			$str = replace_html_tag($str,false);
-		}
-	}
 	return($str);
 }
 
