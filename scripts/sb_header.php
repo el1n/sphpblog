@@ -22,11 +22,6 @@ if(empty($title)){
 $locale = str_replace('_','-',$GLOBALS['lang_string']['locale']);
 $search_uri = dirname($uri).'/plugins/search.php';
 
-// Category RSS
-$cat = '';
-if(isset($_GET['category'])){
-	$cat = '?c='.$_GET['category'];
-}
 print "<?xml version=\"1.0\" encoding=\"".$GLOBALS['lang_string']['html_charset']."\" ?>\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
@@ -38,9 +33,9 @@ print "<?xml version=\"1.0\" encoding=\"".$GLOBALS['lang_string']['html_charset'
 
         <!-- Meta Data -->
         <meta name="generator" content="Simple PHP Blog" />
-        <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="<?php print BASEURL;?>rss.php<?php echo $cat?>" />
-        <link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="<?php print BASEURL;?>rdf.php<?php echo $cat?>" />
-        <link rel="alternate" type="application/atom+xml" title="Get Atom 1.0 Feed" href="<?php print BASEURL;?>atom.php<?php echo $cat?>" />
+        <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="<?php print BASEURL;?>rss.php<?php echo $category ? '?c='.$category : ''?>" />
+        <link rel="alternate" type="application/rdf+xml" title="Get RDF 1.0 Feed" href="<?php print BASEURL;?>rdf.php<?php echo $category ? '?c='.$category : ''?>" />
+        <link rel="alternate" type="application/atom+xml" title="Get Atom 1.0 Feed" href="<?php print BASEURL;?>atom.php<?php echo $category ? '?c='.$category : ''?>" />
         <link rel="search" type="application/opensearchdescription+xml" title="<?php echo $blog_config->getTag('BLOG_TITLE');?>" href="<?php echo $search_uri?>" />
 
         <!-- Meta Data -->

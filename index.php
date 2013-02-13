@@ -98,9 +98,9 @@ if(isset($temp_entry)){
 }
 
 // Category
-if(array_key_exists('category',$_GET)){
+if(array_key_exists('category',$_GET) && intval($_GET['category'])){
 	global $category;
-	$category = $_GET['category'];
+	$category = intval($_GET['category']);
 	$is_permalink = false;
 }
 global $sb_info,$blog_config;
