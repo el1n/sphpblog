@@ -649,17 +649,17 @@ function get_specific_block($title)
 
 function get_fullname($username)
 {
-	global $lang_string;
+	global $blog_config,$lang_string;
 
 	// admin only
 	if($username == 'admin'){
-		$fullname = _sb('sb_admin');
+		$fullname = $blog_config->getTag('BLOG_AUTHOR');
 		return($fullname);
 	}
 
 	// Go to the users database and get the user name
 	if($username == ''){
-		$fullname = _sb('sb_admin');
+		$fullname = $blog_config->getTag('BLOG_AUTHOR');
 		return($fullname);
 	}else{
 		$user_list = read_users();
