@@ -259,26 +259,26 @@ function page_content()
 	}?>> <?php echo(_sb('blog_enable_stats'));?><br />
 				<input type="checkbox" id="blog_enable_lastcomments" name="blog_enable_lastcomments"<?php if($blog_config->getTag('BLOG_ENABLE_LASTCOMMENTS') == 1){
 		echo(' checked');
-	}?>> <?php echo(_sb('blog_enable_lastcomments'));?><br />
+	}?> disabled="disabled"> <?php echo(_sb('blog_enable_lastcomments'));?><br />
 				<input type="checkbox" id="blog_enable_lastentries" name="blog_enable_lastentries"<?php if($blog_config->getTag('BLOG_ENABLE_LASTENTRIES') == 1){
 		echo(' checked');
-	}?>> <?php echo(_sb('blog_enable_lastentries'));?><br />
+	}?> disabled="disabled"> <?php echo(_sb('blog_enable_lastentries'));?><br />
 				<input type="checkbox" id="blog_enable_archives" name="blog_enable_archives"<?php if($blog_config->getTag('BLOG_ENABLE_ARCHIVES') == 1){
 		echo(' checked');
-	}?>> <?php echo(_sb('blog_enable_archives'));?><br />
+	}?> disabled="disabled"> <?php echo(_sb('blog_enable_archives'));?><br />
 				<input type="checkbox" id="blog_footer_counter" name="blog_footer_counter"<?php if($blog_config->getTag('BLOG_FOOTER_COUNTER') == 1){
 		echo(' checked');
 	}?>> <?php echo(_sb('blog_footer_counter'));?><br />
 				<input type="checkbox" id="blog_enable_counter" name="blog_enable_counter"<?php if($blog_config->getTag('BLOG_ENABLE_COUNTER') == 1){
 		echo(' checked');
-	}?>> <?php echo(_sb('blog_enable_counter'));?><br />
+	}?> disabled="disabled"> <?php echo(_sb('blog_enable_counter'));?><br />
 				<label for="blog_counter_hours"><?php echo(_sb('blog_counter_hours'));?></label>
 				<input type="text" name="blog_counter_hours" value="<?php echo($blog_config->getTag('BLOG_COUNTER_HOURS'));?>" autocomplete="OFF" size="3"><p />
 				<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if($blog_config->getTag('BLOG_ENABLE_CALENDAR') == 1){
 		echo(' checked');
-	}?>> <?php echo(_sb('blog_enable_calendar'));?><br />
+	}?> disabled="disabled"> <?php echo(_sb('blog_enable_calendar'));?><br />
 				<label for="blog_calendar_start"><?php echo(_sb('label_calendar_start'));?></label>
-				<select name="blog_calendar_start">
+				<select name="blog_calendar_start" disabled="disabled">
 					<option label="<?php echo(_sb('cal_sunday'));?>" value="sunday"<?php if($blog_config->getTag('BLOG_CALENDAR_START') == 'sunday'){
 		echo ' selected';
 	}?>><?php echo(_sb('cal_sunday'));?></option>
@@ -288,7 +288,7 @@ function page_content()
 				</select><p />
 				<input type="checkbox" id="blog_search_top" name="blog_search_top"<?php if($blog_config->getTag('BLOG_SEARCH_TOP') == 1){
 		echo(' checked');
-	}?>> <?php echo(_sb('blog_search_top'));?><br />
+	}?> disabled="disabled"> <?php echo(_sb('blog_search_top'));?><br />
 				<input type="checkbox" id="blog_enable_static_block" name="blog_enable_static_block"<?php if($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == 1){
 		echo(' checked');
 	}?>> <?php echo(_sb('blog_enable_static_block'));?>
@@ -347,54 +347,54 @@ function page_content()
 						<td width="50%">
 							<input type="checkbox" id="b" name="b"<?php if(in_array('b',$allowed)){
 		echo(' checked');
-	}?>> [b] = Bold<br />
+	}?> disabled="disabled"> [b] = Bold<br />
 							<input type="checkbox" id="i" name="i"<?php if(in_array('i',$allowed)){
 		echo(' checked');
-	}?>> [i] = Italic<br />
+	}?> disabled="disabled"> [i] = Italic<br />
 							<input type="checkbox" id="strong" name="strong"<?php if(in_array('strong',$allowed)){
 		echo(' checked');
-	}?>> [strong] = Strong<br />
+	}?> disabled="disabled"> [strong] = Strong<br />
 							<input type="checkbox" id="center" name="center"<?php if(in_array('center',$allowed)){
 		echo(' checked');
-	}?>> [center] = Center<br />
+	}?> disabled="disabled"> [center] = Center<br />
 							<input type="checkbox" id="em" name="em"<?php if(in_array('em',$allowed)){
 		echo(' checked');
-	}?>> [em] = Emphasis<br />
+	}?> disabled="disabled"> [em] = Emphasis<br />
 							<br />
 							<input type="checkbox" id="del" name="del"<?php if(in_array('del',$allowed)){
 		echo(' checked');
-	}?>> [del] = Delete<br />
+	}?> disabled="disabled"> [del] = Delete<br />
 							<input type="checkbox" id="ins" name="ins"<?php if(in_array('ins',$allowed)){
 		echo(' checked');
-	}?>> [ins] = Insert<br />
+	}?> disabled="disabled"> [ins] = Insert<br />
 							<input type="checkbox" id="strike" name="strike"<?php if(in_array('strike',$allowed)){
 		echo(' checked');
-	}?>> [strike] = Strike-out<br />
+	}?> disabled="disabled"> [strike] = Strike-out<br />
 						</td>
 						<td width="50%">
 							<!--<input type="checkbox" id="img" name="img"<?php if(in_array('img',$allowed)){
 		echo(' checked');
-	}?>> [img] = Image<br />-->
+	}?> disabled="disabled"> [img] = Image<br />-->
 							<input type="checkbox" id="url" name="url"<?php if(in_array('url',$allowed)){
 		echo(' checked');
-	}?>> [url] = URL<br />
+	}?> disabled="disabled"> [url] = URL<br />
 							<br />
 							<input type="checkbox" id="blockquote" name="blockquote"<?php if(in_array('blockquote',$allowed)){
 		echo(' checked');
-	}?>> [blockquote] = Block Quote<br />
+	}?> disabled="disabled"> [blockquote] = Block Quote<br />
 							<input type="checkbox" id="hN" name="hN"<?php if(in_array('hN',$allowed)){
 		echo(' checked');
-	}?>> [hN] = Headline<br />
+	}?> disabled="disabled"> [hN] = Headline<br />
 							<br />
 							<input type="checkbox" id="pre" name="pre"<?php if(in_array('pre',$allowed)){
 		echo(' checked');
-	}?>> [pre] = Preformatted<br />
+	}?> disabled="disabled"> [pre] = Preformatted<br />
 							<input type="checkbox" id="code" name="code"<?php if(in_array('code',$allowed)){
 		echo(' checked');
-	}?>> [code] = Code<br />
+	}?> disabled="disabled"> [code] = Code<br />
 <!--							<input type="checkbox" id="html" name="html"<?php if(in_array('html',$allowed)){
 		echo(' checked');
-	}?>> [html] = HTML<br />-->
+	}?> disabled="disabled"> [html] = HTML<br />-->
 						</td>
 					</tr>
 				</table><p />
