@@ -8,7 +8,7 @@ $header_graphic = $blog_config->getTag('BLOG_HEADER_GRAPHIC');
 if($header_graphic == ''){
 	$header_graphic = 'images/header750x100.jpg';
 }else{
-	$header_graphic = '../../'.$header_graphic;
+	$header_graphic = preg_match('/^\//',$header_graphic) ? $header_graphic : '../../'.$header_graphic;
 }
 header("Content-Type: text/css");
 ?>
