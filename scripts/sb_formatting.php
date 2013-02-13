@@ -69,6 +69,7 @@ function blog_to_html($str,$comment_mode,$strip_all_tags,$add_no_follow=false,$e
 	$str = replace_img_tag($str,'[img=',']',$strip_all_tags ? true : false);
 	$str = replace_img_tag($str,'[IMG=',']',$strip_all_tags ? true : false);
 	$str = replace_html_tag($str,$strip_all_tags ? true : false);
+	$str = preg_replace('/(<br \/>)+$/isS','',$str);
 
 	return($str);
 }
