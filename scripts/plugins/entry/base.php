@@ -46,7 +46,6 @@ class base
 			'/UNDERLINE' =>'</u>',
 		);
 
-//
 		return(preg_replace('/\[(#|\!)?(\/?[0-9A-Z]{2,})\]/eisS','\'\1\' ? ("\1" == "#" ? "&#\2;" : "<\2>") : (isset($tags[strtoupper(\'\2\')]) ? $tags[strtoupper(\'\2\')] : \'[\1\2]\')',$s));
 	}
 }

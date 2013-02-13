@@ -5,7 +5,6 @@ class fileembed
 
 	function main($s)
 	{
-//
 		return(preg_replace('/\[INCLUDE=(.+?)\]/eisS','is_file(ROOT_DIR.\'\1\') ? file_get_contents(ROOT_DIR.\'\1\') : \'\';',$s));
 	}
 }
