@@ -56,7 +56,7 @@ if(array_key_exists('y',$_GET) && array_key_exists('m',$_GET) && array_key_exist
 	}
 }
 if($redirect === true){
-	redirect_to_url('index.php');
+	redirect_to_url('index.php?entry='.$_GET['entry']);
 }
 
 // ------------
