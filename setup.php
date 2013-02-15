@@ -101,6 +101,10 @@ function page_content()
 				<input type="text" name="blog_title" value="<?php echo($blog_config->getTag('BLOG_TITLE'));?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars;
 	echo($theme_vars['max_image_width'] - 20);?>px;"><p />
 
+				<label for="blog_favicon"><?php echo(_sb('blog_favicon'));?></label><br />
+				<input type="text" name="blog_favicon" value="<?php echo($blog_config->getTag('BLOG_FAVICON'));?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars;
+	echo($theme_vars['max_image_width'] - 20);?>px;"><p />
+
 				<label for="blog_author"><?php echo(_sb('blog_author'));?></label><br />
 				<input type="text" name="blog_author" value="<?php echo($blog_config->getTag('BLOG_AUTHOR'));?>" autocomplete="OFF" size="40" style="width: <?php global $theme_vars;
 	echo($theme_vars['max_image_width'] - 20);?>px;"><p />

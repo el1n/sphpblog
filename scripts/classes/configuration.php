@@ -87,7 +87,6 @@ class Configuration extends container
 		array_push($this->tags,'HTTPS');
 		array_push($this->tags,'HTTPS_URL');
 		array_push($this->tags,'RSS_MAX_ENTRIES');
-
 		//array_push($this->tags, 'SHOW_COMMENTS');
 		//array_push($this->tags, 'RATING_LOGIN');
 		//array_push($this->tags, 'CAPCHA_RATING');
@@ -95,6 +94,7 @@ class Configuration extends container
 		array_push($this->tags,'USE_EMOTICONS');
 		array_push($this->tags,'STATIC_HOME');
 		array_push($this->tags,'USE_JS_EDITOR');
+		array_push($this->tags,'BLOG_FAVICON');
 
 		// Cache Excluded Tags
 		// $this->do_not_cache_tags = array();

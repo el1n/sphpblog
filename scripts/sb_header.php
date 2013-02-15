@@ -63,7 +63,7 @@ print "<?xml version=\"1.0\" encoding=\"".$GLOBALS['lang_string']['html_charset'
         <meta name="revisit-after" content="7 days" />
 
         <!-- Fav Icon -->
-        <link rel="shortcut icon" href="interface/favicon.ico" />
+        <link rel="shortcut icon" href="<?php echo strlen($blog_config->getTag('BLOG_FAVICON')) ? $blog_config->getTag('BLOG_FAVICON') : 'interface/favicon.ico'?>" />
 
         <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL;?>themes/common.css" />
         <link rel="stylesheet" type="text/css" media="all" href="<?php print BASEURL;?>themes/<?php echo $GLOBALS['blog_theme']?>/user_style.php" />

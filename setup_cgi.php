@@ -106,6 +106,7 @@ $new_config->setTag('USE_JS_EDITOR',$_POST['use_js_editor'] == 'on');
 $new_config->setTag('BACK_YEARS',$back_years);
 $new_config->setTag('RSS_MAX_ENTRIES',$rss_max_entries);
 $new_config->setTag('STATIC_HOME',sb_stripslashes($_POST['static_home']));
+$new_config->setTag('BLOG_FAVICON',$_POST['blog_favicon']);
 
 // $new_config->setTag('BANNED_ADDRESS_LIST','');
 // $new_config->setTag('BANNED_WORD_LIST','');
