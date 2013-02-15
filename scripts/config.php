@@ -36,8 +36,8 @@ define('CLASSES_DIR','classes/');
 // Last version and update information.
 //
 global $sb_info;
-$sb_info['version'] = "0.9.0.257";
-$sb_info['last_update'] = '02/13/13';
+$sb_info['version'] = "0.9.0.266";
+$sb_info['last_update'] = '02/15/13';
 
 //Remove timeout limit
 //@set_time_limit( 0 );
