@@ -50,6 +50,8 @@ class base
 			'/UNDERLINE' =>'</u>',
 		);
 
+		$s = preg_replace('/\[\[(?:(.+?):(?!\/{2}))?(.+?)\]\]/eiS','\'[URL=\2]\'.(strlen(\'\1\') ? \'\1\' : \'\2\').\'[/URL]\'',$s);
+		$s = preg_replace('/\[\{(?:(.+?):(?!\/{2}))?(.+?)\}\]/iS','[IMG=\2 popup=false]',$s);
 		return(preg_replace('/\[(#|\!)?(\/?[0-9A-Z]{2,})\]/eisS','\'\1\' ? ("\1" == "#" ? "&#\2;" : "<\2>") : (isset($tags[strtoupper(\'\2\')]) ? $tags[strtoupper(\'\2\')] : \'[\1\2]\')',$s));
 	}
 }
