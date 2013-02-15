@@ -76,8 +76,8 @@ class base
 					'/STRIKE' =>'</strike>',
 					'STRONG' =>'<strong>',
 					'/STRONG' =>'</strong>',
-					'UNDERLINE' =>'<underline>',
-					'/UNDERLINE' =>'</underline>',
+					'UNDERLINE' =>'<u>',
+					'/UNDERLINE' =>'</u>',
 				);
 
 				switch($m[1]){
