@@ -18,7 +18,7 @@ function logged_in($redirect_to_login,$redirect_to_setup)
 	ini_set('session.use_trans_sid',false);
 
 	// the session was expiring before the cookie, this way they are in sync
-	ini_set('session.session.gc_maxlifetime',60 * 60 * 24 * 5);
+	ini_set('session.gc_maxlifetime',60 * 60 * 24 * 5);
 
 	// Init the session.
 	session_set_cookie_params(60 * 60 * 24 * 5);
@@ -31,14 +31,19 @@ function logged_in($redirect_to_login,$redirect_to_setup)
 	// Start the session.
 	session_start();
 
+	// regenerate the sesssion id, especially because this is probably unencrypted
+	session_regenerate_id();
+
+	// TODO fix IP address lockdown, doesn't work with load balancing proxy
+
 	// Check if user is logged in.
 	if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 'yes'){
 		if($_SESSION['site_path'] === BASEURL){
-			if($_SESSION['ip'] === getIP()){
+//			if($_SESSION['ip'] === getIP()){
 
 				// User is logged in.
 				return(true);
-			}
+//			}
 		}
 	}
 
