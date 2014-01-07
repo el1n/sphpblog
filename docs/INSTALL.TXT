@@ -4,31 +4,49 @@ Simple PHP Blog:
 Installation
 ------------
 1) Download and unzip the .zip file.
-2) FTP files to your web server.
-3) Set file permissions for your webserver.  This is usually 750 (owner: rwx, group: r-x), you may need 755 in shared hosting environments, but be careful.
-4) Visit the index.php page.
-5) Follow on screen instructions.
+2) Copy files to your web server where you want Simple PHP Blog to appear.
+3) Set file permissions for your webserver.  (See #2 below)
+4) Visit the index.php page.  (If blank, see #1 below)
+5) Follow on screen instructions.  (See #3 below)
 
 Trouble Shooting
 ----------------
-Simple PHP Blog stores all of your information in three
+1.  You may just end up with a blank page.  If this happens there is a likely 
+a PHP error behind it, but it is not displayed on the page for security 
+reasons.  It should appear in your usual error log for PHP.  If you don't 
+know where this is or it is not accessible to you, your should open 
+scripts/sb_functions.php and comment or remove the following line near the 
+top:
+
+error_reporting( 0 );
+
+After this, refresh the page and the error should show on the page itself.  
+Once you correct the errors and the page loads normally, you should restore 
+this line for security purposes.
+
+
+2. Simple PHP Blog stores all of your information in three
 separate folders. These folders are dynamically created:
 
 config/
 content/
 images/
 
-The installation process will attempt to create these
-folders. However, if write permissions are disabled,
-you will have to manually create these folders and set
-the write permissions yourself.
+The installation process will attempt to create these folders and requires 
+write permissions to create them.  This is usually 770 (owner: rwx, 
+group: rwx).  You may need 775 or even 777 (NOT RECOMMENDED!) in shared 
+hosting environments, but be very careful with these as it can expose your 
+configuration to other users or even the entire internet.
 
-After creating the folders, visit the index.php page
+Alternatively, for the most secure file permissions, you can manually create 
+these three folders and set the write permissions yourself on only them, 
+typically 770.
+
+After setting the permissions properly, visit the index.php page
 again. It will walk you through the rest of the process.
 
-More Trouble Shooting
----------------------
-If you are still having trouble saving your username and
+
+3. If you are still having trouble saving your username and
 password, it is most likely due to a SAFE MODE issue.
 
 By default, PHP is set to run in SAFE MODE.
