@@ -26,13 +26,13 @@ msgid "menu_stats"
 msgstr "Statistik"
 
 msgid "menu_calendar"
-msgstr "Calendar"
+msgstr "Kalender"
 
 msgid "menu_archive"
 msgstr "Archiv"
 
 msgid "menu_viewarchives"
-msgstr "View Archives"
+msgstr "Zeige Archive"
 
 msgid "menu_menu"
 msgstr "Menü"
@@ -59,7 +59,7 @@ msgid "menu_options"
 msgstr "Optionen"
 
 msgid "menu_themes"
-msgstr "Theme"
+msgstr "Thema"
 
 msgid "menu_colors"
 msgstr "Farben"
@@ -91,17 +91,20 @@ msgstr "Emoticons"
 msgid "menu_avatar"
 msgstr "Avatar"
 
+msgid "menu_moderation"
+msgstr "Moderationsfunktionen"
+
 msgid "counter_today"
-msgstr "Today:"
+msgstr "Heute:"
 
 msgid "counter_yesterday"
-msgstr "Yesterday:"
+msgstr "Gestern:"
 
 msgid "counter_totalsidebar"
 msgstr "Total:"
 
 msgid "counter_title"
-msgstr "Counter Totals"
+msgstr "Zählerstände"
 
 msgid "home"
 msgstr "Zurück zur Startseite"
@@ -125,7 +128,7 @@ msgid "counter_total"
 msgstr "Site Views: "
 
 msgid "read_more"
-msgstr "Read More..."
+msgstr "Mehr..."
 
 msgid "sb_months"
 msgstr "Array"
@@ -170,13 +173,16 @@ msgid "sb_comments_plural_btn"
 msgstr "Kommentare"
 
 msgid "sb_view_counter_pre"
-msgstr ""
+msgstr " "
 
 msgid "sb_view_counter_post"
 msgstr " mal angeschaut"
 
+msgid "sb_postedby"
+msgstr "Beitrag von"
+
 msgid "sb_view_counter_plural_pre"
-msgstr ""
+msgstr " "
 
 msgid "sb_view_counter_plural_post"
 msgstr " mal angeschaut"
@@ -206,7 +212,7 @@ msgid "btn_url"
 msgstr "url"
 
 msgid "btn_readmore"
-msgstr "read more"
+msgstr "Weiterlesen"
 
 msgid "view_images"
 msgstr "Vorschau der hochgeladenen Bilder (Bilderliste)"
@@ -257,22 +263,22 @@ msgid "insert_image_float"
 msgstr "Schwebend (optional):"
 
 msgid "day"
-msgstr "Day"
+msgstr "Tag"
 
 msgid "month"
-msgstr "Month"
+msgstr "Monat"
 
 msgid "year"
-msgstr "Year"
+msgstr "Jahr"
 
 msgid "hour"
-msgstr "Hour"
+msgstr "Stunde"
 
 msgid "minute"
 msgstr "Minute"
 
 msgid "second"
-msgstr "Second"
+msgstr "Sekunde"
 
 msgid "add_title"
 msgstr "Eintrag hinzufügen"
@@ -296,7 +302,7 @@ msgid "label_relatedlink"
 msgstr "Related Link"
 
 msgid "label_categories"
-msgstr "Category List"
+msgstr "Kategorienliste"
 
 msgid "add_instructions_update"
 msgstr "<p>Der Eintrag kann in dem unteren Formular geändert werden. Zum Abschluß auf 'Vorschau' oder 'Abschicken' drücken.</p>"
@@ -338,19 +344,19 @@ msgid "homepage"
 msgstr "Homepage:"
 
 msgid "comment"
-msgstr "Comment:"
+msgstr "Kommentar:"
 
 msgid "IPAddress"
-msgstr "IP Address:"
+msgstr "IP Addresse:"
 
 msgid "useragent"
 msgstr "User Agent:"
 
 msgid "wrote"
-msgstr "<i>On %s, %s wrote:</i><br /> <br /> %s"
+msgstr "<i>Am %s, %s schrieb:</i><br /> <br /> %s"
 
 msgid "commentposted"
-msgstr "New comment posted at: "
+msgstr "Neuer Kommentar geschrieben: "
 
 msgid "comment_capcha"
 msgstr "Anti-Spam: Enter "
@@ -386,10 +392,10 @@ msgid "delete_btn"
 msgstr "löschen"
 
 msgid "expired_comment1"
-msgstr "We are sorry. New comments are not allowed after "
+msgstr "Entschuldigung. Keine Kommentare mehr möglich nach "
 
 msgid "expired_comment2"
-msgstr " days."
+msgstr " Tagen"
 
 msgid "blacklisted"
 msgstr "Sorry, your IP address has been banned. Comments not allowed."
@@ -656,10 +662,10 @@ msgid "upgrade"
 msgstr "<h2>Aktualisierung</h2>"
 
 msgid "upgrade_count"
-msgstr "%n Kommentardateien benötigen ein Aktualisierung:"
+msgstr "%n Kommentardateien benötigen eine Aktualisierung:"
 
 msgid "upgrade_url"
-msgstr "Aktualisiere Kommentera"
+msgstr "Aktualisiere Kommentere"
 
 msgid "login_title"
 msgstr "Anmeldung"
@@ -947,13 +953,13 @@ msgid "label_comment_order"
 msgstr "Kommentar Reihenfolge:"
 
 msgid "cal_sunday"
-msgstr "Sunday"
+msgstr "Sonntag"
 
 msgid "cal_monday"
-msgstr "Monday"
+msgstr "Montag"
 
 msgid "label_calendar_start"
-msgstr "Calendar Week Start Day"
+msgstr "Kalender Erster Wochentag"
 
 msgid "blog_enable_calendar"
 msgstr "Enable Calendar / Archives Block"
@@ -994,11 +1000,17 @@ msgstr "Enable Most Recent Comments Listing"
 msgid "blog_enable_lastentries"
 msgstr "Enable Most Recent Entries Listing"
 
+msgid "menu_random_entry"
+msgstr "Zufallsfund"
+
+msgid "menu_plugins"
+msgstr "PlugIn-Verwaltung"
+
 msgid "title_sidebar"
 msgstr "Sidebar"
 
 msgid "title_comments"
-msgstr "Comments"
+msgstr "Kommentare"
 
 msgid "title_trackback"
 msgstr "Trackbacks"
@@ -1007,7 +1019,7 @@ msgid "title_compression"
 msgstr "Compression"
 
 msgid "title_entries"
-msgstr "Entries"
+msgstr "Einträge"
 
 msgid "title_general"
 msgstr "General"
@@ -1020,6 +1032,18 @@ msgstr "Comments Allowed For How Many Days? (0 means no expiry)"
 
 msgid "options_title"
 msgstr "Optionen"
+
+msgid "manage_users"
+msgstr "Benutzerverwaltung"
+
+msgid "manage_php_config"
+msgstr "PHP-Konfiguration"
+
+msgid "zip_backup"
+msgstr "Datensicherung"
+
+msgid "image_backup"
+msgstr "Bilder sichern"
 
 msgid "options_instructions"
 msgstr "<p>In dem unteren Formular kann man die Datums- und Zeitanzeige für die Blog Einträge und Kommentare ändern. Man kann 12 und 24 Stunden Zeitformat, kurzes oder langes Daum auswählen. Die <b>Vorschau</b> Felder aktualisieren automatisch, um die zukünfitge Formatierung anzuzeigen.</p>"
@@ -1247,10 +1271,10 @@ msgid "upload_instructions"
 msgstr "Upload New Emoticon:"
 
 msgid "upload_success"
-msgstr "Success! Image uploaded successfully!"
+msgstr "OK! Bild erfolgreich hochgeladen!"
 
 msgid "upload_error"
-msgstr "Error! Image was not uploaded."
+msgstr "Fehler! Bild wurde nicht hochgeladen."
 
 msgid "upload_invalid"
 msgstr "Error! Invalid image file. Image must be a png, jpg, or gif."
@@ -1263,4 +1287,19 @@ msgstr "Error! Emoticon preferences not saved."
 
 msgid "save_button"
 msgstr "Save Emoticons"
+
+msgid "notice_loggedin"
+msgstr "angemeldet"
+
+msgid "ban_btn"
+msgstr "bannen"
+
+msgid "logout_success"
+msgstr "Erfolgreich abgemeldet "
+
+msgid "btn_modify"
+msgstr "Ändern"
+
+msgid "btn_delete"
+msgstr "Löschen"
 
