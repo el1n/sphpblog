@@ -3,6 +3,7 @@
 // ---------------
 // INITIALIZE PAGE
 // ---------------
+$CACHE = false;
 require_once('sb_functions.php');
 
 $uri = dirname(sb_curPageURL()).'/index.php';
