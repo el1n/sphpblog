@@ -613,9 +613,8 @@ function read_entries($m,$y,$d,$logged_in,$start_entry,$category,$is_permalink =
 	// 1) Search box
 	if($blog_config->getTag('BLOG_SEARCH_TOP') == true){
 		$entry_array = array();
-		$search = array();
-		$search = menu_search_field_horiz();
-		$entry_array['entry'] = $search['content'];
+		$search = new Search();
+		$entry_array['entry'] = $search->getcontent();
 		$blog_content = theme_genericentry($entry_array,'solid').$blog_content;
 	}
 	return $blog_content;
