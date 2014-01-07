@@ -230,8 +230,10 @@ function sb_editor($mode = 'entry')
 	// --------
 	// ----- Form Begin -----
 	ob_start();
+
+	global $lang_string;
 	?>
-    <form action='' method="post" name="editor" id="editor" onsubmit="return <?php echo($validate_script);?>(this)">
+    <form action='' accept-charset="<?php echo($lang_string['html_charset']);?>" method="post" name="editor" id="editor" onsubmit="return <?php echo($validate_script);?>(this)">
       <?php
 	// Hidden Fields
 	if($mode == 'entry'){
