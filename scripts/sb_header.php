@@ -22,6 +22,7 @@ if(empty($title)){
 $locale = str_replace('_','-',$GLOBALS['lang_string']['locale']);
 $search_uri = dirname($uri).'/plugins/search.php';
 
+header("Content-Type: "."text/html; charset=".$GLOBALS['lang_string']['html_charset']."");
 print "<?xml version=\"1.0\" encoding=\"".$GLOBALS['lang_string']['html_charset']."\" ?>\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
