@@ -123,19 +123,9 @@ class CreativeCommons extends Sidebar
 			return '';
 		}
 		return '
-<!--Creative Commons License--><a rel="license" href="http://creativecommons.org/licenses/by/'.$v.'/"><img alt="Creative Commons License" 
-height="31" width="88" src="http://creativecommons.org/images/public/somerights20.gif"/></a><br/>This work is licensed under a <a rel="license" 
-href="http://creativecommons.org/licenses/by/'.$v.'/">Creative Commons '.$lookup.' '.$v.' License</a>.<!--/Creative Commons License--><!-- 
-<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" 
-xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-	<Work rdf:about="">
-		<license rdf:resource="http://creativecommons.org/licenses/by/'.$v.'/" />
-	<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-	</Work>
-	<License rdf:about="http://creativecommons.org/licenses/by/'.$v.'/"><permits 
-rdf:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires 
-rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><permits 
-rdf:resource="http://web.resource.org/cc/DerivativeWorks"/></License></rdf:RDF> -->
+<!--Creative Commons License--><a rel="license" href="http://creativecommons.org/licenses/' . $name . '/' . $v . '/"><img alt="Creative Commons License" 
+height="31" width="88" src="http://i.creativecommons.org/l/' . $name . '/' . $v . '/88x31.png"/></a><br/>This work is licensed under a <a rel="license" 
+href="http://creativecommons.org/licenses/' . $name . '/' . $v . '/">Creative Commons ' . $lookup . ' ' . $v . ' License</a>.<!--/Creative Commons License-->
 ';
 	}
 }
