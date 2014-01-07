@@ -5,8 +5,9 @@ Installation
 ------------
 1) Download and unzip the .zip file.
 2) FTP files to your web server.
-3) Visit the index.php page.
-4) Follow on screen instructions.
+3) Set file permissions for your webserver.  This is usually 750 (owner: rwx, group: r-x), you may need 755 in shared hosting environments, but be careful.
+4) Visit the index.php page.
+5) Follow on screen instructions.
 
 Trouble Shooting
 ----------------
