@@ -597,9 +597,16 @@ function read_entries($m,$y,$d,$logged_in,$start_entry,$category,$is_permalink =
 	// 2) Selected block (with or without border ie using CSS - without border handy for those with wide ads)
 	if($blog_config->getTag('BLOG_ENABLE_STATIC_BLOCK') == true){
 		$entry_array = array();
-		$spec_block = get_specific_block($blog_config->getTag('STATIC_BLOCK_OPTIONS'));
+		$name = $blog_config->getTag('STATIC_BLOCK_OPTIONS');
+		$spec_block = get_specific_block($name);
 		if(is_array($spec_block)){
 			$entry_array['entry'] = $spec_block['text'];
+
+			// handle plugin content here
+			if($spec_block['text'] == 'plugin'){
+				$p = new $name;
+				$entry_array[ 'entry' ] = $p->getcontent();
+			}
 			$entry_array['subject'] = $spec_block['title'];
 			$bordertype = $blog_config->getTag('STATIC_BLOCK_BORDER');
 			if($bordertype == 'noborder'){
