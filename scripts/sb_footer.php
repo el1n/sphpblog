@@ -8,6 +8,11 @@ if(function_exists('page_content')){
 		page_content();
 	}
 }
-?>
 
-</html>
+if(CUSTOM_HEADER){
+	// put custom header code here
+	@include_once("$webroot/include/footer.php");
+}else{
+	print "</body></html>";
+}
+?>

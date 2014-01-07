@@ -22,16 +22,9 @@ if(empty($title)){
 $locale = str_replace('_','-',$GLOBALS['lang_string']['locale']);
 $search_uri = dirname($uri).'/plugins/search.php';
 
-header("Content-Type: "."text/html; charset=".$GLOBALS['lang_string']['html_charset']."");
-print "<?xml version=\"1.0\" encoding=\"".$GLOBALS['lang_string']['html_charset']."\" ?>\n";
+ob_start();
+
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-        <title><?php echo $title;?></title>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $GLOBALS['lang_string']['html_charset'];?>" />
-
         <!-- Meta Data -->
         <meta name="generator" content="Simple PHP Blog" />
         <link rel="alternate" type="application/rss+xml" title="Get RSS 2.0 Feed" href="<?php print BASEURL;?>rss.php<?php echo $category ? '?c='.$category : ''?>" />
@@ -76,11 +69,34 @@ print "<?xml version=\"1.0\" encoding=\"".$GLOBALS['lang_string']['html_charset'
 	<script type="text/javascript" src="<?php print BASEURL;?>scripts/sb_javascript.js"></script>
 
 <?php
-	echo($blog_config->getTag('TRACKING_CODE'));
-if(!empty($head)) 
-	echo $head;
+	$header .= ob_get_clean(); 
+
+
+	if(CUSTOM_HEADER){
+	// put custom header code here
+		@include_once("../include/header.php");
+	
+	}else{
+		header("Content-Type: "."text/html; charset=".$GLOBALS['lang_string']['html_charset']."");
+		print "<?xml version=\"1.0\" encoding=\"".$GLOBALS['lang_string']['html_charset']."\"?>\n";
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <title><?php echo $title;?></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $GLOBALS['lang_string']['html_charset'];?>" />
+
+<?php
+	$header .= $blog_config->getTag('TRACKING_CODE');
+	if(!empty($header))
+		echo $header;
 ?>
 </head>
+<body>
 <?php
+
+}
+
 flush();
 ?>

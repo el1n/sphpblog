@@ -19,6 +19,8 @@ if(strpos($sessionpath,";") !== FALSE){
 }
 define('SESSION_SAVE_PATH',$sessionpath);
 
+define('CUSTOM_HEADER',false);
+
 // Variables
 // define('USE_MOD_REWRITE', false);
 define('BLOG_MASK',0775);
