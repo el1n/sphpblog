@@ -255,13 +255,14 @@ function page_content()
 				<h4 style="display: inline;"><?php echo(_sb('title_sidebar'));?></h4>
 			</a><p />
 			<div id="toggleSetupSidebar" class="toggleBody"><p />
+				<a href="plugins.php">Edit Plugins</a><br/>
 				<input type="checkbox" id="blog_enable_login" name="blog_enable_login"<?php if($blog_config->getTag('BLOG_ENABLE_LOGIN') == 1){
 		echo(' checked');
 	}?>> <?php echo(_sb('blog_enable_login'));?><br />
 				<input type="checkbox" id="blog_enable_stats" name="blog_enable_stats"<?php if($blog_config->getTag('BLOG_ENABLE_STATS') == 1){
 		echo(' checked');
 	}?>> <?php echo(_sb('blog_enable_stats'));?><br />
-				<input type="checkbox" id="blog_enable_lastcomments" name="blog_enable_lastcomments"<?php if($blog_config->getTag('BLOG_ENABLE_LASTCOMMENTS') == 1){
+			<!--	<input type="checkbox" id="blog_enable_lastcomments" name="blog_enable_lastcomments"<?php if($blog_config->getTag('BLOG_ENABLE_LASTCOMMENTS') == 1){
 		echo(' checked');
 	}?> disabled="disabled"> <?php echo(_sb('blog_enable_lastcomments'));?><br />
 				<input type="checkbox" id="blog_enable_lastentries" name="blog_enable_lastentries"<?php if($blog_config->getTag('BLOG_ENABLE_LASTENTRIES') == 1){
@@ -270,15 +271,15 @@ function page_content()
 				<input type="checkbox" id="blog_enable_archives" name="blog_enable_archives"<?php if($blog_config->getTag('BLOG_ENABLE_ARCHIVES') == 1){
 		echo(' checked');
 	}?> disabled="disabled"> <?php echo(_sb('blog_enable_archives'));?><br />
-				<input type="checkbox" id="blog_footer_counter" name="blog_footer_counter"<?php if($blog_config->getTag('BLOG_FOOTER_COUNTER') == 1){
+			-->	<input type="checkbox" id="blog_footer_counter" name="blog_footer_counter"<?php if($blog_config->getTag('BLOG_FOOTER_COUNTER') == 1){
 		echo(' checked');
 	}?>> <?php echo(_sb('blog_footer_counter'));?><br />
-				<input type="checkbox" id="blog_enable_counter" name="blog_enable_counter"<?php if($blog_config->getTag('BLOG_ENABLE_COUNTER') == 1){
+			<!--	<input type="checkbox" id="blog_enable_counter" name="blog_enable_counter"<?php if($blog_config->getTag('BLOG_ENABLE_COUNTER') == 1){
 		echo(' checked');
 	}?> disabled="disabled"> <?php echo(_sb('blog_enable_counter'));?><br />
-				<label for="blog_counter_hours"><?php echo(_sb('blog_counter_hours'));?></label>
+			-->	<label for="blog_counter_hours"><?php echo(_sb('blog_counter_hours'));?></label>
 				<input type="text" name="blog_counter_hours" value="<?php echo($blog_config->getTag('BLOG_COUNTER_HOURS'));?>" autocomplete="OFF" size="3"><p />
-				<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if($blog_config->getTag('BLOG_ENABLE_CALENDAR') == 1){
+			<!--	<input type="checkbox" id="blog_enable_calendar" name="blog_enable_calendar"<?php if($blog_config->getTag('BLOG_ENABLE_CALENDAR') == 1){
 		echo(' checked');
 	}?> disabled="disabled"> <?php echo(_sb('blog_enable_calendar'));?><br />
 				<label for="blog_calendar_start"><?php echo(_sb('label_calendar_start'));?></label>
@@ -290,6 +291,7 @@ function page_content()
 		echo ' selected';
 	}?>><?php echo(_sb('cal_monday'));?></option>
 				</select><p />
+			-->
 				<input type="checkbox" id="blog_search_top" name="blog_search_top"<?php if($blog_config->getTag('BLOG_SEARCH_TOP') == 1){
 		echo(' checked');
 	}?> disabled="disabled"> <?php echo(_sb('blog_search_top'));?><br />
