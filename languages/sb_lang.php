@@ -1,10 +1,10 @@
 <?php
-function sb_import_lang($name,$page = "")
+function sb_import_lang($name)
 {
 	include("$name/strings.php");
 
-	// call old init function here
-	//sb_language( $page );
+	// call init function to set locale here
+	sb_language();
 	global $lang_string;
 	$handle = fopen(ROOT_DIR."/languages/$name/strings.po","r");
 	$lastid = "";
