@@ -4,6 +4,7 @@
 // INITIALIZE PAGE
 // ---------------
 $CACHE = false;
+@include_once("../include/site.php");
 require_once('sb_functions.php');
 
 $uri = dirname(sb_curPageURL()).'/index.php';
