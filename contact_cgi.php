@@ -38,7 +38,9 @@ if($_POST['capcha_contact'] == $_SESSION['capcha_contact'] AND $_SESSION['capcha
 
 	// header('location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'errorpage.php');
 }
-@session_unregister('capcha_contact');
+// session_uregister deprecated
+//@session_unregister('capcha_contact');
+unset($_SESSION['capcha_contact']);
 
 // -----------
 // PAGE CONTENT
