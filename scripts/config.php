@@ -19,7 +19,8 @@ if(strpos($sessionpath,";") !== FALSE){
 }
 define('SESSION_SAVE_PATH',$sessionpath);
 
-define('CUSTOM_HEADER',false);
+define('CUSTOM_HEADER',true);
+define('LOGOUT_TIME',3600 * 24 * 7);
 
 // Variables
 // define('USE_MOD_REWRITE', false);
