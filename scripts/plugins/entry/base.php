@@ -8,18 +8,18 @@ class base
 	{
 		$this->regx = array
 		(
-			'/\[\[(?:(.+?):(?!\/{2}))?(?:([a-z]*?):(?!\/{2}))?(.+?)\]\]/iS' =>
+			'/\[\[(?:(.*?)(:)(?!\/{2}))?(?:([a-z]*?):(?!\/{2}))?(.+?)\]\]/iS' =>
 			function($m){
 				switch(true){
-					case preg_match('/s/',$m[2]):
-						$m[2] = '_self';
+					case preg_match('/s/',$m[3]):
+						$m[3] = '_self';
 						break;
-					case preg_match('/b/',$m[2]):
+					case preg_match('/b/',$m[3]):
 					default:
-						$m[2] = '_blank';
+						$m[3] = '_blank';
 						break;
 				}
-				return(sprintf('<a href="%s" target="%s">%s</a>',$m[3],$m[2],$m[1] ? $m[1] : $m[3]));
+				return(sprintf('<a href="%s" target="%s">%s</a>',$m[4],$m[3],$m[1] ? $m[1] : $m[2] ? basename($m[4]) : $m[4]));
 			},
 			'/\[\{(?:(.+?):(?!\/{2}))?(?:([a-z]*?):(?!\/{2}))?(.+?\.(?:bmp|gif|jpe?g|png))\}\]/iS' =>
 			function($m){
@@ -33,8 +33,9 @@ class base
 				}
 				return(sprintf('[IMG=%s%s]',$m[3],$m[2]));
 			},
-			'/\[([!#$])?(\/?\w{2,})\]/isS' =>
+			'/\[([!#$\.])?(\/?(?:\w{2,})?)\]/isS' =>
 			function($m){
+				static $prev;
 				static $s = array
 				(
 					'BOLD' =>'<b>',
@@ -85,15 +86,32 @@ class base
 						return('['.$m[2].']');
 						break;
 					case '$':
+						$prev = $m[2];
 						return('<'.$m[2].'>');
 						break;
 					case '#':
 						return('&#'.$m[2].';');
 						break;
+					case '.':
+						$prev = "span";
+						return('<span class="'.$m[2].'">');
+						break;
 					default:
 						break;
 				}
-				return(isset($s[strtoupper($m[2])]) ? $s[strtoupper($m[2])] : '['.$m[1].$m[2].']');
+				switch($m[2]){
+					case '/':
+						return('</'.$r.'>');
+						break;
+					default:
+						if(isset($s[strtoupper($m[2])])){
+							$prev = $m[2];
+							return($s[strtoupper($m[2])]);
+						}else{
+							return('['.$m[1].$m[2].']');
+						}
+						break;
+				}
 			},
 			'/\[&lt;(.+?)(?::([a-z]*?))?&gt;\]/iS' =>
 			function($m){
