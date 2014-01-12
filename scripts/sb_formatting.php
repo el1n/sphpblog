@@ -296,28 +296,28 @@ function replace_url_tag($str,$tag_begin,$tag_end,$tag_close,$strip_tags,$add_no
 			if($str_offset !== false){
 
 				// If the address contains more than 56 characters and begins with "HTTP://"
-				if($str_offset >= 56 && (substr($str,0,7)) == "http://"){
-
-					// Store the URL up to the 39th character
-					$str_link = substr($str,0,39);
-
-					// Store the final part of the URL
-					$str_link_fine = substr($str_url, - 10);
-				}else{
-
-					// If the URL is less than 56 characters, store the whole URL
+//				if($str_offset >= 56 && (substr($str,0,7)) == "http://"){
+//
+//					// Store the URL up to the 39th character
+//					$str_link = substr($str,0,39);
+//
+//					// Store the final part of the URL
+//					$str_link_fine = substr($str_url, - 10);
+//				}else{
+//
+//					// If the URL is less than 56 characters, store the whole URL
 					$str_link = substr($str,0,$str_offset);
-				}
+//				}
 				if($strip_tags == false){
 
 					// More than 56 characters
-					if($str_offset >= 56 && (substr($str,0,7)) == "http://"){
-						$str_out .= $str_link.' ... '.$str_link_fine.'</a>';
-					}else{
-
-						// Less than 56 characters
+//					if($str_offset >= 56 && (substr($str,0,7)) == "http://"){
+//						$str_out .= $str_link.' ... '.$str_link_fine.'</a>';
+//					}else{
+//
+//						// Less than 56 characters
 						$str_out .= $str_link.'</a>';
-					}
+//					}
 				}else{
 
 					// Strip tags...
