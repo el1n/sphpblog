@@ -19,7 +19,7 @@ class base
 						$m[3] = '_blank';
 						break;
 				}
-				return(sprintf('<a href="%s" target="%s">%s</a>',$m[4],$m[3],$m[1] ? $m[1] : $m[2] ? basename($m[4]) : $m[4]));
+				return(sprintf('<a href="%s" target="%s">%s</a>',$m[4],$m[3],$m[1] ? $m[1] : ($m[2] ? basename($m[4]) : $m[4])));
 			},
 			'/\[\{(?:(.+?):(?!\/{2}))?(?:([a-z]*?):(?!\/{2}))?(.+?\.(?:bmp|gif|jpe?g|png))\}\]/iS' =>
 			function($m){
