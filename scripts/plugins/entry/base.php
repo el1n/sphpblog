@@ -101,7 +101,7 @@ class base
 				}
 				switch($m[2]){
 					case '/':
-						return('</'.$r.'>');
+						return('</'.$prev.'>');
 						break;
 					default:
 						if(isset($s[strtoupper($m[2])])){
