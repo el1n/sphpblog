@@ -136,10 +136,11 @@ function theme_blogentry($entry_array,$mode = 'entry')
 	if(!empty($entry_array['avatarurl'])){
 		$blog_content = $blog_content.'<img src="'.$entry_array['avatarurl'].'" alt="" style="border-style: none" />';
 	}
+	$blog_content .= '<a href="'.$entry_array['permalink']['url'].'">'.$entry_array['subject'].'</a>';
 	if(!empty($entry_array['id'])){
-		$blog_content .= $entry_array['subject'].'<a id="'.$entry_array['id'].'">&nbsp;</a><br />'."\n";
+		$blog_content .= '<a id="'.$entry_array['id'].'">&nbsp;</a><br />'."\n";
 	}else{
-		$blog_content .= $entry_array['subject'].'<br />'."\n";
+		$blog_content .= '<br />'."\n";
 	}
 
 	// Display EDIT and DELETE buttons if the user is logged in.
