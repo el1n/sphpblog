@@ -93,7 +93,15 @@ function read_entries($m,$y,$d,$logged_in,$start_entry,$category,$is_permalink =
 	}
 	$entry_index = 0;
 	for($i = 0;$i < count($entry_file_array);$i++){
-		if(stristr(str_replace(' ','-',$entry_file_array[$i]),$look_for) !== FALSE){
+		$values = explode('|',$entry_file_array[$i]);
+
+		if(str_replace(' ','-',$values[0]) == $look_for.".txt"){
+
+			// MATCH!
+			$entry_index = $i;
+			break;
+		}
+		if(str_replace(' ','-',$values[3]) == $look_for){
 
 			// MATCH!
 			$entry_index = $i;
